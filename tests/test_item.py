@@ -12,4 +12,7 @@ def test_calculate_total_price(class_test_item):
 
 
 def test_apply_discount(class_test_item):
-    assert class_test_item.apply_discount() is None
+    assert class_test_item.price == 10000
+    class_test_item.pay_rate = 0.5
+    class_test_item.apply_discount()
+    assert class_test_item.price == 5000
