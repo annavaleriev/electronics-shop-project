@@ -7,7 +7,6 @@ class Item:
     """
     pay_rate: float = 1.0
     all: list = []
-    csv_file = "../src/items.csv"
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
@@ -18,7 +17,7 @@ class Item:
         :param quantity: Количество товара в магазине.
         """
 
-        self.__name: str = name
+        self.__name: str = name[:10]
         self.price: float = price
         self.quantity: int = quantity
         Item.all.append(self)
@@ -36,10 +35,7 @@ class Item:
         """
         Сеттер для name
         """
-        if len(name) > 10:
-            self.__name = name[:10]
-        else:
-            self.__name = name
+        self.__name = name[:10]
 
     def calculate_total_price(self) -> float:
         """
@@ -57,22 +53,18 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, csv_file):
-        # cls.all.clear()
-        # cls.all = []
-        with open(csv_file, encoding='utf-8', errors='ignore') as file:
+        cls.all.clear()
+        with open(csv_file, encoding="windows-1251") as file:
             reader = csv.DictReader(file)
             for row in reader:
-                name = row['name']
+                name = row["name"]
                 price = float(row["price"])
-                amount = int(row['quantity'])
+                amount = int(row["quantity"])
                 cls(name, price, amount)
 
     @staticmethod
     def string_to_number(string):
-        return int(len(string))
-        # return int(string)
-
-    # with open('names.csv', newline='') as csvfile:
-    #     reader = csv.DictReader(csvfile)
-    #     for row in reader:
-    #         print(row['first_name'], row['last_name'])
+        try:
+            return int(float(string))
+        except ValueError:
+            print("Недопустимое значение")
