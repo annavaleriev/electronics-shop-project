@@ -23,14 +23,14 @@ class Item:
         Item.all.append(self)
 
     @property
-    def name(self):
+    def name(self) -> str:
         """
         Геттер для name
         """
         return self.__name
 
     @name.setter
-    def name(self, name):
+    def name(self, name) -> None:
 
         """
         Сеттер для name
@@ -53,6 +53,9 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, csv_file):
+        """
+        Инициализирует экземпляры класса из 'csv' файла.
+        """
         cls.all.clear()
         with open(csv_file, encoding="windows-1251") as file:
             reader = csv.DictReader(file)
@@ -64,6 +67,9 @@ class Item:
 
     @staticmethod
     def string_to_number(string):
+        """
+        Статический метод, возвращающий число из числа-строк
+        """
         try:
             return int(float(string))
         except ValueError:
