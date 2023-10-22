@@ -23,9 +23,15 @@ class Item:
         Item.all.append(self)
 
     def __repr__(self):
+        """
+        Выводит сообщение о классе и свойствах  класса
+        """
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
     def __str__(self):
+        """
+        Выводит сообщение c названием товара
+        """
         return f'{self.__name}'
 
     @property

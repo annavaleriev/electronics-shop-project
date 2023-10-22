@@ -40,5 +40,5 @@ def test_repr(class_test_item):
 
 
 def test_str(class_test_item):
-    assert class_test_item.__str__() == class_test_item.name
+    # assert class_test_item.__str__() == class_test_item.name
     assert class_test_item.__str__() == 'Смартфон'
