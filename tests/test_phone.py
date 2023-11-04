@@ -32,6 +32,11 @@ def test_number_of_sim(class_test_phone):
     assert class_test_phone.number_of_sim == 2
     if class_test_phone.number_of_sim == 0:
         assert class_test_phone.number_of_sim == "Количество физических SIM-карт должно быть целым числом больше нуля"
+    if class_test_phone.number_of_sim == 1.2:
+        assert class_test_phone.number_of_sim == "Количество физических SIM-карт должно быть целым числом больше нуля"
+    if class_test_phone.number_of_sim == -5:
+        assert class_test_phone.number_of_sim == "Количество физических SIM-карт должно быть целым числом больше нуля"
+
 
 
 
