@@ -2,18 +2,6 @@ import pytest
 
 from src.phone import Phone
 
-# # смартфон iPhone 14, цена 120_000, количество товара 5, симкарт 2
-# phone1 = Phone("iPhone 14", 120_000, 5, 2)
-# assert str(phone1) == 'iPhone 14'
-# assert repr(phone1) == "Phone('iPhone 14', 120000, 5, 2)"
-#
-# def test_repr(class_test_item):
-#     assert repr(class_test_item) == "Item('Смартфон', 10000, 2)"
-#
-#
-# def test_str(class_test_item):
-#     assert str(class_test_item) == 'Смартфон'
-#
 
 @pytest.fixture()
 def class_test_phone():
@@ -48,6 +36,19 @@ def test_number_of_sim(class_test_phone):
     #
 # phone1.number_of_sim = 0
 #     # ValueError: Количество физических SIM-карт должно быть целым числом больше нуля.
+
+# # смартфон iPhone 14, цена 120_000, количество товара 5, симкарт 2
+# phone1 = Phone("iPhone 14", 120_000, 5, 2)
+# assert str(phone1) == 'iPhone 14'
+# assert repr(phone1) == "Phone('iPhone 14', 120000, 5, 2)"
+#
+# def test_repr(class_test_item):
+#     assert repr(class_test_item) == "Item('Смартфон', 10000, 2)"
+#
+#
+# def test_str(class_test_item):
+#     assert str(class_test_item) == 'Смартфон'
+#
 
 
 
