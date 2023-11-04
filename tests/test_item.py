@@ -1,5 +1,10 @@
+from pathlib import Path
+
 import pytest
 from src.item import Item
+
+ROOT_PATH = Path(__file__).parent.parent
+SCR_PATH = ROOT_PATH.joinpath("src", "items.csv")
 
 
 @pytest.fixture()
@@ -31,7 +36,7 @@ def test_name(class_test_item):
 
 
 def test_instantiate_from_csv(class_test_item):
-    class_test_item.instantiate_from_csv('src/items.csv')
+    class_test_item.instantiate_from_csv(SCR_PATH)
     assert len(Item.all) == 5
 
 
