@@ -85,7 +85,7 @@ class Item:
         try:
             return int(float(string))
         except ValueError:
-            print("Недопустимое значение")
+            raise ValueError("Недопустимое значение")
 
     def __add__(self, other):
         """

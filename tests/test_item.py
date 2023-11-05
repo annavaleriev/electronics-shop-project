@@ -1,9 +1,9 @@
 from pathlib import Path
 
 import pytest
+
 from src.item import Item
 from tests.test_phone import class_test_phone
-
 
 ROOT_PATH = Path(__file__).parent.parent
 SCR_PATH = ROOT_PATH.joinpath("src", "items.csv")
@@ -52,12 +52,8 @@ def test_str(class_test_item):
 
 def test_add(class_test_item, class_test_phone):
     assert class_test_item + class_test_phone == 7
-    # assert class_test_item + 10 == ValueError
-    # assert class_test_phone + 20 == "Складывать можно только объекты Item и дочерние от них."
 
 
-    # def __add__(self, other):
-    #     if not isinstance(other, Item):
-    #         raise ValueError("Складывать можно только объекты Item и дочерние от них.")
-    #     return other.quantity + self.quantity
-
+def test_check_number_of_simclass_test_item):
+    with pytest.raises(ValueError):
+        class_test_item + 10

@@ -4,7 +4,7 @@ from src.item import Item
 class Phone(Item):
     def __init__(self, name: str, price: int, quantity: int, number_of_sim: int) -> None:
         super().__init__(name, price, quantity)
-        self.__number_of_sim: int = number_of_sim
+        self.__number_of_sim: int = self.check_number_of_sim(number_of_sim)
 
     def __str__(self) -> str:
         """
@@ -25,10 +25,12 @@ class Phone(Item):
         """
         return self.__number_of_sim
 
+    @staticmethod
+    def check_number_of_sim(number_of_sim):
+        if number_of_sim <= 0 or not isinstance(number_of_sim, int):
+            raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля")
+        return number_of_sim
+
     @number_of_sim.setter
     def number_of_sim(self, value):
-        if value <= 0:
-            raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля")
-        else:
-            self.__number_of_sim = value
-
+        self.__number_of_sim = self.check_number_of_sim(value)
