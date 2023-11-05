@@ -85,4 +85,13 @@ class Item:
         try:
             return int(float(string))
         except ValueError:
-            print("Недопустимое значение")
+            raise ValueError("Недопустимое значение")
+
+    def __add__(self, other):
+        """
+        Метод, реализуйющий возможность сложения экземпляров класса
+        """
+        if not isinstance(other, Item):
+            raise ValueError("Складывать можно только объекты Item и дочерние от них.")
+        return other.quantity + self.quantity
+

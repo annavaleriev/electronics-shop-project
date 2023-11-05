@@ -1,5 +1,12 @@
+from pathlib import Path
+
 import pytest
+
 from src.item import Item
+from tests.test_phone import class_test_phone
+
+ROOT_PATH = Path(__file__).parent.parent
+SCR_PATH = ROOT_PATH.joinpath("src", "items.csv")
 
 
 @pytest.fixture()
@@ -31,7 +38,7 @@ def test_name(class_test_item):
 
 
 def test_instantiate_from_csv(class_test_item):
-    class_test_item.instantiate_from_csv('src/items.csv')
+    class_test_item.instantiate_from_csv(SCR_PATH)
     assert len(Item.all) == 5
 
 
@@ -41,3 +48,12 @@ def test_repr(class_test_item):
 
 def test_str(class_test_item):
     assert str(class_test_item) == 'Смартфон'
+
+
+def test_add(class_test_item, class_test_phone):
+    assert class_test_item + class_test_phone == 7
+
+
+def test_add_failed(class_test_item):
+    with pytest.raises(ValueError):
+        class_test_item + 10
