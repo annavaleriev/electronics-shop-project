@@ -54,6 +54,6 @@ def test_add(class_test_item, class_test_phone):
     assert class_test_item + class_test_phone == 7
 
 
-def test_check_number_of_simclass_test_item):
+def test_add_failed(class_test_item):
     with pytest.raises(ValueError):
         class_test_item + 10
