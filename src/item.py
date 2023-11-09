@@ -94,4 +94,3 @@ class Item:
         if not isinstance(other, Item):
             raise ValueError("Складывать можно только объекты Item и дочерние от них.")
         return other.quantity + self.quantity
-
