@@ -17,7 +17,7 @@ class Item:
         :param quantity: Количество товара в магазине.
         """
 
-        self.__name: str = name[:10]
+        self.__name: str = name
         self.price: float = price
         self.quantity: int = quantity
         Item.all.append(self)
@@ -94,4 +94,3 @@ class Item:
         if not isinstance(other, Item):
             raise ValueError("Складывать можно только объекты Item и дочерние от них.")
         return other.quantity + self.quantity
-
