@@ -1,14 +1,9 @@
-from pathlib import Path
-
 import pytest
 
 from src.exceptions import InstantiateCSVError
 from src.item import Item
-from src.settings import BROKEN_ITEMS_CSV_PATH
+from src.settings import BROKEN_ITEMS_CSV_PATH, ITEMS_CSV_PATH
 from tests.test_phone import class_test_phone
-
-ROOT_PATH = Path(__file__).parent.parent
-SCR_PATH = ROOT_PATH.joinpath("src", "items.csv")
 
 
 @pytest.fixture()
@@ -40,7 +35,7 @@ def test_name(class_test_item):
 
 
 def test_instantiate_from_csv(class_test_item):
-    class_test_item.instantiate_from_csv(SCR_PATH)
+    class_test_item.instantiate_from_csv(ITEMS_CSV_PATH)
     assert len(Item.all) == 5
 
 
@@ -63,13 +58,9 @@ def test_add_failed(class_test_item):
 
 def test_file_not_found_error(class_test_item):
     with pytest.raises(FileNotFoundError):
-        # class_test_item.instantiate_from_csv("")
-        assert class_test_item.instantiate_from_csv('') == "Отсутствует файл item.csv"
-    # with pytest.raises(InstantiateCSVError):
-    #     assert class_test_item.instantiate_from_csv(BROKEN_ITEMS_CSV_PATH) == "Файл item.csv поврежден"
+        class_test_item.instantiate_from_csv("")
 
 
 def test_key_error(class_test_item):
     with pytest.raises(InstantiateCSVError):
-        # class_test_item.instantiate_from_csv(BROKEN_ITEMS_CSV_PATH)
-        assert class_test_item.instantiate_from_csv(BROKEN_ITEMS_CSV_PATH) == "Файл item.csv поврежден"
+        class_test_item.instantiate_from_csv(BROKEN_ITEMS_CSV_PATH)
