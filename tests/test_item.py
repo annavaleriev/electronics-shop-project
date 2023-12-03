@@ -65,8 +65,8 @@ def test_file_not_found_error(class_test_item):
     with pytest.raises(FileNotFoundError):
         # class_test_item.instantiate_from_csv("")
         assert class_test_item.instantiate_from_csv('') == "Отсутствует файл item.csv"
-        # with pytest.raises(InstantiateCSVError):
-        #     assert class_test_item.instantiate_from_csv(BROKEN_ITEMS_CSV_PATH) == "Файл item.csv поврежден"
+    # with pytest.raises(InstantiateCSVError):
+    #     assert class_test_item.instantiate_from_csv(BROKEN_ITEMS_CSV_PATH) == "Файл item.csv поврежден"
 
 
 def test_key_error(class_test_item):
